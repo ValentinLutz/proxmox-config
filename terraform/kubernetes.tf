@@ -51,7 +51,7 @@ resource "proxmox_vm_qemu" "load-balancer" {
   }
   disk {
     type = "scsi"
-    size = "16G"
+    size = "8G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
@@ -89,7 +89,7 @@ resource "proxmox_vm_qemu" "master" {
   }
   disk {
     type = "scsi"
-    size = "16G"
+    size = "8G"
     slot = 0
     storage = "local-lvm"
     backup = 1
@@ -126,7 +126,7 @@ resource "proxmox_vm_qemu" "worker" {
   }
   disk {
     type = "scsi"
-    size = "16G"
+    size = "8G"
     slot = 0
     storage = "local-lvm"
     backup = 1

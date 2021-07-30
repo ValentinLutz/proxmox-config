@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "traefik" {
   }
   disk {
     type = "scsi"
-    size = "16G"
+    size = "8G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
