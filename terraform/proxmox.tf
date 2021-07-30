@@ -10,7 +10,7 @@ terraform {
 provider "proxmox" {
   pm_api_url = "https://proxmox:8006/api2/json"
   pm_tls_insecure = true
-  pm_parallel = 1
+  pm_parallel = 4
   # pm_user = ENV PM_USER
   # pm_password = ENV PM_PASSWORD
 }
