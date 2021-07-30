@@ -14,3 +14,13 @@ provider "proxmox" {
   # pm_user = ENV PM_USER
   # pm_password = ENV PM_PASSWORD
 }
+
+# ENV TF_VAR_user
+variable "user" {
+  type = string
+}
+
+# ENV TF_VAR_password
+variable "password" {
+  type = string
+}

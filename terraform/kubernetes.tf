@@ -23,16 +23,6 @@ locals {
   }
 }
 
-# ENV TF_VAR_user
-variable "user" {
-  type = string
-}
-
-# ENV TF_VAR_password
-variable "password" {
-  type = string
-}
-
 resource "proxmox_vm_qemu" "load-balancer" {
   name = "k8s-load-balancer"
   target_node = "proxmox"
