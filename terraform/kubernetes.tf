@@ -26,7 +26,7 @@ locals {
 resource "proxmox_vm_qemu" "load-balancer" {
   name = "k8s-load-balancer"
   target_node = "proxmox"
-  vmid = 110
+  vmid = 115
   desc = "Load balancer for kubernetes high availability setup."
   onboot = true
   boot = "order=scsi0"
@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "load-balancer" {
   tags = "k8s, kubernetes, load-balancer"
   os_type = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
-  ipconfig0 = "ip=192.168.134.110/24,gw=192.168.134.1"
+  ipconfig0 = "ip=192.168.134.115/24,gw=192.168.134.1"
   ciuser = var.user
   cipassword = var.password
   network {
