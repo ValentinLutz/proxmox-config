@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "load-balancer" {
   onboot = true
   boot = "order=scsi0"
   agent = 1
-  clone = "ubuntu-2004-cloud-init-template"
+  clone = var.proxmox_cloud_init_template
   full_clone = true
   memory = 2048
   balloon = 0
@@ -43,8 +43,8 @@ resource "proxmox_vm_qemu" "load-balancer" {
   os_type = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0 = "ip=192.168.134.115/24,gw=192.168.134.1"
-  ciuser = var.user
-  cipassword = var.password
+  ciuser = var.ssh_user
+  cipassword = var.ssh_password
   network {
     model = "virtio"
     bridge = "vmbr0"
@@ -69,7 +69,7 @@ resource "proxmox_vm_qemu" "master" {
   onboot = true
   boot = "order=scsi0"
   agent = 1
-  clone = "ubuntu-2004-cloud-init-template"
+  clone = var.proxmox_cloud_init_template
   full_clone = true
   memory = 2048
   balloon = 0
@@ -81,8 +81,8 @@ resource "proxmox_vm_qemu" "master" {
   os_type = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0 = "ip=192.168.134.${each.value.vmid}/24,gw=192.168.134.1"
-  ciuser = var.user
-  cipassword = var.password
+  ciuser = var.ssh_user
+  cipassword = var.ssh_password
   network {
     model = "virtio"
     bridge = "vmbr0"
@@ -106,7 +106,7 @@ resource "proxmox_vm_qemu" "worker" {
   onboot = true
   boot = "order=scsi0"
   agent = 1
-  clone = "ubuntu-2004-cloud-init-template"
+  clone = var.proxmox_cloud_init_template
   full_clone = true
   memory = 4096
   balloon = 0
@@ -118,8 +118,8 @@ resource "proxmox_vm_qemu" "worker" {
   os_type = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0 = "ip=192.168.134.${each.value.vmid}/24,gw=192.168.134.1"
-  ciuser = var.user
-  cipassword = var.password
+  ciuser = var.ssh_user
+  cipassword = var.ssh_password
   network {
     model = "virtio"
     bridge = "vmbr0"
