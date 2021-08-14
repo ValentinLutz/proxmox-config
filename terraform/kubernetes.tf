@@ -114,7 +114,7 @@ resource "proxmox_vm_qemu" "worker" {
   cores = 2
   hotplug = "disk,network,usb"
   scsihw = "virtio-scsi-pci"
-  tags = "k8s, kubernetes, master"
+  tags = "k8s, kubernetes, worker"
   os_type = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0 = "ip=192.168.134.${each.value.vmid}/24,gw=192.168.134.1"
