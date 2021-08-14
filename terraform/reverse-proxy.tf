@@ -23,6 +23,7 @@ resource "proxmox_vm_qemu" "traefik" {
   network {
     model = "virtio"
     bridge = "vmbr0"
+    macaddr = "00:00:C0:A8:86:64"
   }
   disk {
     type = "scsi"
@@ -59,6 +60,7 @@ resource "proxmox_vm_qemu" "authelia" {
   network {
     model = "virtio"
     bridge = "vmbr0"
+    macaddr = "00:00:C0:A8:86:65"
   }
   disk {
     type = "scsi"

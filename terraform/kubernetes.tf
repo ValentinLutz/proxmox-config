@@ -2,23 +2,29 @@ locals {
   masters = {
     alpha = {
       vmid = 120
+      macaddr = "00:00:C0:A8:86:78"
     },
     beta = {
       vmid = 121
+      macaddr = "00:00:C0:A8:86:79"
     },
     gamma = {
       vmid = 122
+      macaddr = "00:00:C0:A8:86:80"
     }
   }
   workers = {
     vega = {
       vmid = 130
+      macaddr = "00:00:C0:A8:86:82"
     },
     polaris = {
       vmid = 131
+      macaddr = "00:00:C0:A8:86:83"
     },
     rigel = {
       vmid = 132
+      macaddr = "00:00:C0:A8:86:84"
     }
   }
 }
@@ -48,6 +54,7 @@ resource "proxmox_vm_qemu" "load-balancer" {
   network {
     model = "virtio"
     bridge = "vmbr0"
+    macaddr = "00:00:C0:A8:86:73"
   }
   disk {
     type = "scsi"
@@ -86,11 +93,13 @@ resource "proxmox_vm_qemu" "master" {
   network {
     model = "virtio"
     bridge = "vmbr0"
+    macaddr = each.value.macaddr
   }
   disk {
     type = "scsi"
     size = "8G"
     slot = 0
+    format = "qcow2"
     storage = "local-lvm"
     backup = 1
   }
@@ -123,11 +132,13 @@ resource "proxmox_vm_qemu" "worker" {
   network {
     model = "virtio"
     bridge = "vmbr0"
+    macaddr = each.value.macaddr
   }
   disk {
     type = "scsi"
     size = "8G"
     slot = 0
+    format = "qcow2"
     storage = "local-lvm"
     backup = 1
   }
