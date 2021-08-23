@@ -51,6 +51,7 @@ resource "proxmox_vm_qemu" "load-balancer" {
   ipconfig0 = "ip=192.168.134.115/24,gw=192.168.134.1"
   ciuser = var.ssh_user
   cipassword = var.ssh_password
+  sshkeys = var.ssh_pub_keys
   network {
     model = "virtio"
     bridge = "vmbr0"
@@ -90,6 +91,7 @@ resource "proxmox_vm_qemu" "master" {
   ipconfig0 = "ip=192.168.134.${each.value.vmid}/24,gw=192.168.134.1"
   ciuser = var.ssh_user
   cipassword = var.ssh_password
+  sshkeys = var.ssh_pub_keys
   network {
     model = "virtio"
     bridge = "vmbr0"
@@ -129,6 +131,7 @@ resource "proxmox_vm_qemu" "worker" {
   ipconfig0 = "ip=192.168.134.${each.value.vmid}/24,gw=192.168.134.1"
   ciuser = var.ssh_user
   cipassword = var.ssh_password
+  sshkeys = var.ssh_pub_keys
   network {
     model = "virtio"
     bridge = "vmbr0"

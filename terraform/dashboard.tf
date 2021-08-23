@@ -20,6 +20,7 @@ resource "proxmox_vm_qemu" "heimdall" {
   ipconfig0 = "ip=192.168.134.105/24,gw=192.168.134.1"
   ciuser = var.ssh_user
   cipassword = var.ssh_password
+  sshkeys = var.ssh_pub_keys
   network {
     model = "virtio"
     bridge = "vmbr0"

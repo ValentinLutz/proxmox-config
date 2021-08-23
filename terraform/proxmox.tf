@@ -43,3 +43,9 @@ variable "ssh_password" {
   type = string
   sensitive = true
 }
+
+# ENV TF_VAR_ssh_pub_keys
+variable "ssh_pub_keys" {
+  type = string
+  sensitive = true
+}
