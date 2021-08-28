@@ -16,7 +16,7 @@ http:
         certResolver: dns
 
     heimdall:
-      rule: "Host(`heimdall.monke.science`)"
+      rule: "Host(`heimdall.monke.science`) || Host(`monke.science`)"
       middlewares:
         - authelia@file
       service: heimdall@file

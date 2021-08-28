@@ -37,6 +37,8 @@ notifier:
 access_control:
   default_policy: deny
   rules:
+    - domain: monke.science
+      policy: one_factor
     - domain: heimdall.monke.science
       policy: one_factor
     - domain: traefik.monke.science
