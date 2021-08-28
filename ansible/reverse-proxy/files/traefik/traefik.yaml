@@ -1,0 +1,52 @@
+---
+################################################################
+#
+# Configuration sample for Traefik v2.
+#
+# For Traefik v1: https://github.com/traefik/traefik/blob/v1.7/traefik.sample.toml
+#
+################################################################
+
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: true
+
+entryPoints:
+  http:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: https
+          scheme: https
+  https:
+    address: ":443"
+
+providers:
+  file:
+    filename: "/etc/traefik/traefik_dynamic.yaml"
+
+serversTransport:
+  insecureSkipVerify: true
+
+# Enable logs
+log: {}
+
+# Enable API and dashboard
+api:
+  dashboard: true
+
+# Enable ping
+# ping: {}
+
+# Enable ACME
+certificatesResolvers:
+  dns:
+    acme:
+      email: allround.email@gmail.com
+      storage: acme.json
+      dnsChallenge:
+        provider: namecheap
+        # NAMECHEAP_API_USER
+        # NAMECHEAP_API_KEY
+        delayBeforeCheck: 0

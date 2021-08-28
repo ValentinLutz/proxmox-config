@@ -2,6 +2,6 @@
 
 ## Reverse-Proxy
 
-```shell
-ansible-playbook -i hosts.ini traefik.yaml --ask-pass
+``` bash
+ansible-playbook -i hosts.ini playbook.yaml --ask-pass
 ```

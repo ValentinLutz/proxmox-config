@@ -13,3 +13,6 @@ secret.tfvars
 # Intellij
 .idea
 
+# Docker
+.env
+

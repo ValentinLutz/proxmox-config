@@ -1,0 +1,41 @@
+---
+- name: Install and confiugure traefik with authelia
+  gather_facts: false
+  hosts: traefik
+  tasks:
+
+  - import_tasks: ../tasks/docker.yaml
+  
+  - name: Ensure config directory exists
+    become: yes
+    ansible.builtin.file:
+      path: /etc/reverse-proxy
+      state: directory
+
+  - name: Copy reverse-proxy config files
+    become: yes
+    ansible.builtin.copy:
+      src: ./files/
+      dest: /etc/reverse-proxy
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Add empty acme.json with the right permissions
+    become: yes
+    ansible.builtin.file:
+      path: /etc/reverse-proxy/traefik/acme.json
+      state: touch
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: Start treafik
+    become: yes
+    community.docker.docker_compose:
+      project_name: traefik
+      project_src: /etc/reverse-proxy
+      state: present
+      remove_orphans: yes
+      recreate: always
+      restarted: yes
