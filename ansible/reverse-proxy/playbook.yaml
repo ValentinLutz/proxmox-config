@@ -1,5 +1,5 @@
 ---
-- name: Install and confiugure traefik with authelia
+- name: Install and configure traefik with authelia
   gather_facts: false
   hosts: traefik
   tasks:
