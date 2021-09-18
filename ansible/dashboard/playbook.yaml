@@ -1,0 +1,29 @@
+---
+- name: Install and configure heimdall
+  gather_facts: false
+  hosts: heimdall
+  tasks:
+  - import_tasks: ../tasks/docker.yaml
+  
+  - name: Ensure config directory exists
+    become: yes
+    ansible.builtin.file:
+      path: /etc/dashboard
+      state: directory
+
+  - name: Copy heimdall config files
+    become: yes
+    ansible.builtin.copy:
+      src: ./files/
+      dest: /etc/dashboard/heimdall/
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Start heimdall with docker-compose
+    become: yes
+    community.docker.docker_compose:
+      project_name: heimdall
+      project_src: /etc/dashboard
+      state: present
+      restarted: yes

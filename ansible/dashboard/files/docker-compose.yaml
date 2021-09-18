@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall
+    container_name: heimdall
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - /etc/dashboard/heimdall:/config:rw
+    environment:
+      - TZ=Europe/Berlin
