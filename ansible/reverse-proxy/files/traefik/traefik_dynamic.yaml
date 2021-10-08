@@ -48,3 +48,17 @@ http:
       loadBalancer:
         servers:
         - url: "https://192.168.134.105/"
+
+
+udp:
+  routers:
+    wireguard:
+      service: wireguard@file
+      entryPoints:
+        - "vpn"
+      
+  services:
+    wireguard:
+      loadBalancer:
+        servers:
+        - address: "192.168.134.102:51820"

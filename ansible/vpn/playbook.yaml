@@ -1,0 +1,49 @@
+---
+- name: Install and configure wireguard
+  gather_facts: false
+  hosts: wireguard
+  # vars:
+    # server_privkey:
+    # server_pubkey:
+  tasks:
+  - name: Include secrets
+    include_vars: secrets.yaml
+
+  - name: Enable ip forwarding
+    become: yes
+    ansible.builtin.sysctl:
+      name: net.ipv4.ip_forward
+      value: "1"
+      state: present
+      sysctl_set: yes
+      reload: yes
+
+  - name: Install wireguard
+    become: yes
+    ansible.builtin.apt:
+      name: wireguard
+      state: present
+
+  - name: Create wireguard server config
+    become: yes
+    ansible.builtin.template:
+      dest: /etc/wireguard/wg0.conf
+      src: wg0.conf
+      owner: root
+      group: root
+      mode: 0600
+    notify: Reload wireguard config
+
+  - name: Start wireguard and enable on boot
+    become: yes
+    ansible.builtin.systemd:
+      name: wg-quick@wg0
+      enabled: yes
+      state: started
+
+  handlers:
+  - name: Reload wireguard config
+    become: yes
+    ansible.builtin.service:
+      name: wg-quick@wg0
+      state: restarted

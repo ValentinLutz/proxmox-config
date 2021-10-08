@@ -11,6 +11,7 @@ services:
       - "80:80"
       - "443:443"
       - "8080:8080"
+      - "51820:51820/udp"
     volumes: 
       - /etc/reverse-proxy/traefik/traefik.yaml:/etc/traefik/traefik.yaml:ro
       - /etc/reverse-proxy/traefik/acme.json:/acme.json:rw
