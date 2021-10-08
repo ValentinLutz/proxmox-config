@@ -10,6 +10,9 @@ override.tf.json
 *_override.tf.json
 secret.tfvars
 
+# Ansible
+secrets.yaml
+
 # Intellij
 .idea
 
