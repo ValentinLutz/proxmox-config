@@ -99,7 +99,7 @@ resource "proxmox_vm_qemu" "master" {
   }
   disk {
     type = "scsi"
-    size = "8G"
+    size = "16G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
@@ -139,7 +139,7 @@ resource "proxmox_vm_qemu" "worker" {
   }
   disk {
     type = "scsi"
-    size = "8G"
+    size = "32G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
