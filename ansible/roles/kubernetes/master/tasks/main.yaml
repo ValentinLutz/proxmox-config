@@ -1,0 +1,38 @@
+---
+- name: Reset Kubernetes component
+  shell: kubeadm reset --force
+
+- name: Init Kubernetes cluster
+  shell: |
+    kubeadm init --kubernetes-version {{ kubernetes_kubeadm_version }} \
+                 --token {{ kubernetes_token }} \
+                 --pod-network-cidr {{ kubernetes_cidr }} \
+                 --apiserver-advertise-address {{ kubernetes_master_ip }}
+
+- name: Create Kubernetes config directory
+  file:
+    path: /etc/kubernetes
+    state: directory
+
+- name: Ensure .kube directory exists
+  ansible.builtin.file:
+    path: "/home/{{ ansible_user }}/.kube"
+    state: directory
+
+- name: Add kubectl config to {{ ansible_user }} home directory
+  ansible.builtin.copy:
+    src: /etc/kubernetes/admin.conf
+    dest: "/home/{{ ansible_user }}/.kube/config"
+    remote_src: yes
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Deploy flannel
+  command: |
+    kubectl --kubeconfig=/etc/kubernetes/admin.conf \
+        apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+- name: Deploy kubernetes dashboard
+  command: |
+    kubectl --kubeconfig=/etc/kubernetes/admin.conf \
+        apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended.yaml

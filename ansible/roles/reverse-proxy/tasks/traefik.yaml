@@ -1,12 +1,10 @@
 ---
 - name: Ensure config directory exists
-  become: yes
   ansible.builtin.file:
     path: /etc/reverse-proxy
     state: directory
 
 - name: Add empty acme.json with the right permissions
-  become: yes
   ansible.builtin.file:
     path: /etc/reverse-proxy/traefik/acme.json
     owner: root
@@ -14,7 +12,6 @@
     mode: 0600
 
 - name: Copy reverse-proxy config files
-  become: yes
   ansible.builtin.copy:
     src: .
     dest: /etc/reverse-proxy
@@ -25,7 +22,6 @@
    - Restart treafik
 
 - name: Copy reverse-proxy environments file
-  become: yes
   ansible.builtin.template:
     src: .env
     dest: /etc/reverse-proxy

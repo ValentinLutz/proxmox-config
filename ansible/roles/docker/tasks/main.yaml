@@ -1,6 +1,5 @@
 ---  
 - name: Install docker
-  become: yes
   ansible.builtin.apt:
     name: docker.io
     state: present
@@ -10,15 +9,13 @@
     name: docker
     state: present
 
-- name: Add the user {{ ANSIBLE_USER }} to the docker group
-  become: yes
+- name: Add the user {{ ansible_user }} to the docker group
   ansible.builtin.user:
-    name: "{{ ANSIBLE_USER }}"
+    name: "{{ ansible_user }}"
     groups: docker
     append: yes
 
 - name: Install docker-compose
-  become: yes
   ansible.builtin.apt:
     name: docker-compose
     state: present

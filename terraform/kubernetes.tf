@@ -4,14 +4,14 @@ locals {
       vmid = 120
       macaddr = "00:00:C0:A8:86:78"
     },
-    beta = {
-      vmid = 121
-      macaddr = "00:00:C0:A8:86:79"
-    },
-    gamma = {
-      vmid = 122
-      macaddr = "00:00:C0:A8:86:80"
-    }
+    # beta = {
+    #   vmid = 121
+    #   macaddr = "00:00:C0:A8:86:79"
+    # },
+    # gamma = {
+    #   vmid = 122
+    #   macaddr = "00:00:C0:A8:86:80"
+    # }
   }
   workers = {
     vega = {
@@ -29,43 +29,43 @@ locals {
   }
 }
 
-resource "proxmox_vm_qemu" "load-balancer" {
-  name = "k8s-load-balancer"
-  target_node = "proxmox"
-  vmid = 115
-  desc = "Load balancer for kubernetes high availability setup."
-  onboot = true
-  boot = "order=scsi0"
-  agent = 1
-  clone = var.proxmox_cloud_init_template
-  full_clone = true
-  memory = 2048
-  balloon = 0
-  sockets = 1
-  cores = 2
-  hotplug = "disk,network,usb"
-  scsihw = "virtio-scsi-pci"
-  tags = "k8s, kubernetes, load-balancer"
-  os_type = "cloud-init"
-  cloudinit_cdrom_storage = "local-lvm"
-  ipconfig0 = "ip=192.168.134.115/24,gw=192.168.134.1"
-  ciuser = var.ssh_user
-  cipassword = var.ssh_password
-  sshkeys = var.ssh_pub_keys
-  network {
-    model = "virtio"
-    bridge = "vmbr0"
-    macaddr = "00:00:C0:A8:86:73"
-  }
-  disk {
-    type = "scsi"
-    size = "8G"
-    slot = 0
-    format = "qcow2"
-    storage = "local-lvm"
-    backup = 1
-  }
-}
+# resource "proxmox_vm_qemu" "load-balancer" {
+#   name = "k8s-load-balancer"
+#   target_node = "proxmox"
+#   vmid = 115
+#   desc = "Load balancer for kubernetes high availability setup."
+#   onboot = true
+#   boot = "order=scsi0"
+#   agent = 1
+#   clone = var.proxmox_cloud_init_template
+#   full_clone = true
+#   memory = 2048
+#   balloon = 0
+#   sockets = 1
+#   cores = 2
+#   hotplug = "disk,network,usb"
+#   scsihw = "virtio-scsi-pci"
+#   tags = "k8s, kubernetes, load-balancer"
+#   os_type = "cloud-init"
+#   cloudinit_cdrom_storage = "local-lvm"
+#   ipconfig0 = "ip=192.168.134.115/24,gw=192.168.134.1"
+#   ciuser = var.ssh_user
+#   cipassword = var.ssh_password
+#   sshkeys = var.ssh_pub_keys
+#   network {
+#     model = "virtio"
+#     bridge = "vmbr0"
+#     macaddr = "00:00:C0:A8:86:73"
+#   }
+#   disk {
+#     type = "scsi"
+#     size = "8G"
+#     slot = 0
+#     format = "qcow2"
+#     storage = "local-lvm"
+#     backup = 1
+#   }
+# }
 
 resource "proxmox_vm_qemu" "master" {
   for_each = local.masters
@@ -79,10 +79,10 @@ resource "proxmox_vm_qemu" "master" {
   agent = 1
   clone = var.proxmox_cloud_init_template
   full_clone = true
-  memory = 2048
+  memory = 8192
   balloon = 0
   sockets = 1
-  cores = 2
+  cores = 4
   hotplug = "disk,network,usb"
   scsihw = "virtio-scsi-pci"
   tags = "k8s, kubernetes, master"
@@ -119,10 +119,10 @@ resource "proxmox_vm_qemu" "worker" {
   agent = 1
   clone = var.proxmox_cloud_init_template
   full_clone = true
-  memory = 4096
+  memory = 8192
   balloon = 0
   sockets = 1
-  cores = 2
+  cores = 4
   hotplug = "disk,network,usb"
   scsihw = "virtio-scsi-pci"
   tags = "k8s, kubernetes, worker"

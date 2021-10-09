@@ -5,6 +5,14 @@
 
 http:
   routers:
+    proxmox:
+      rule: "Host(`proxmox.monke.science`)"
+      middlewares:
+        - authelia@file
+      service: proxmox@file
+      tls:
+        certResolver: dns
+
     authelia:
       rule: "Host(`auth.monke.science`)"
       service: authelia@file
@@ -26,12 +34,12 @@ http:
       service: heimdall@file
       tls:
         certResolver: dns
-    
-    proxmox:
-      rule: "Host(`proxmox.monke.science`)"
+
+    kubernetes:
+      rule: "Host(`kubernetes.monke.science`)"
       middlewares:
         - authelia@file
-      service: proxmox@file
+      service: kubernetes@file
       tls:
         certResolver: dns
 
@@ -51,6 +59,11 @@ http:
 
 
   services:
+    proxmox:
+      loadBalancer:
+        servers:
+        - url: "https://192.168.134.90:8006/"
+
     authelia:
       loadBalancer:
         servers:
@@ -61,10 +74,10 @@ http:
         servers:
         - url: "https://192.168.134.105/"
 
-    proxmox:
+    kubernetes:
       loadBalancer:
         servers:
-        - url: "https://192.168.134.90:8006/"
+        - url: "https://192.168.134.120/"
 
 
 udp:

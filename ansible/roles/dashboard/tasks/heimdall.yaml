@@ -1,12 +1,10 @@
 ---
 - name: Ensure config directory exists
-  become: yes
   ansible.builtin.file:
     path: /etc/dashboard
     state: directory
 
 - name: Copy heimdall config files
-  become: yes
   ansible.builtin.copy:
     src: .
     dest: /etc/dashboard

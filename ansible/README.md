@@ -7,25 +7,30 @@
 ###############################################################
 #                     Ansible secrets                         #
 ###############################################################
-ANSIBLE_USER: 
+ansible_user: 
 
 ###############################################################
 #                     Traefik secrets                         #
 ###############################################################
-TRAEFIK_NAMECHEAP_API_USER: 
-TRAEFIK_NAMECHEAP_API_KEY: 
+traefik_namecheap_api_user: 
+traefik_namecheap_api_key: 
 
 ###############################################################
 #                     Authelia secrets                        #
 ###############################################################
-AUTHELIA_NOTIFIER_SMTP_PASSWORD: 
-AUTHELIA_JWT_SECRET: 
+authelia_notifier_smtp_password: 
+authelia_jwt_secret: 
 
 ###############################################################
 #                     WireGuard secrets                       #
 ###############################################################
-WIREGUARD_SERVER_PRIVATE_KEY:
-WIREGUARD_CLIENT_PUBLIC_KEY:
+wireguard_server_private_key:
+wireguard_client_public_key:
+
+###############################################################
+#                     Kubernetes secrets                       #
+###############################################################
+kubernetes_token: 
 ```
 
 ## Run all

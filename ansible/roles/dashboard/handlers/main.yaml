@@ -1,6 +1,5 @@
 ---
 - name: Restart heimdall
-  become: yes
   community.docker.docker_compose:
     project_name: heimdall
     project_src: /etc/dashboard

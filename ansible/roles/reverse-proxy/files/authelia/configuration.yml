@@ -37,11 +37,13 @@ notifier:
 access_control:
   default_policy: deny
   rules:
+    - domain: proxmox.monke.science
+      policy: two_factor
+    - domain: traefik.monke.science
+      policy: two_factor
     - domain: monke.science
       policy: one_factor
     - domain: heimdall.monke.science
       policy: one_factor
-    - domain: traefik.monke.science
-      policy: two_factor
-    - domain: proxmox.monke.science
+    - domain: kubernetes.monke.science
       policy: two_factor
