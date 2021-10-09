@@ -1,0 +1,10 @@
+---
+- name: Restart treafik
+  become: yes
+  community.docker.docker_compose:
+    project_name: traefik
+    project_src: /etc/reverse-proxy
+    state: present
+    remove_orphans: yes
+    recreate: always
+    restarted: yes

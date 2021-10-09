@@ -1,11 +1,7 @@
 ---
-################################################################
-#
-# Configuration sample for Traefik v2.
-#
-# For Traefik v1: https://github.com/traefik/traefik/blob/v1.7/traefik.sample.toml
-#
-################################################################
+###############################################################
+#                 Traefik static configuration                #
+###############################################################
 
 global:
   checkNewVersion: true
@@ -30,7 +26,7 @@ providers:
 
 serversTransport:
   insecureSkipVerify: true
-
+  
 # Enable logs
 log: {}
 

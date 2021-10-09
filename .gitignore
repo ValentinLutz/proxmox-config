@@ -16,6 +16,3 @@ secrets.yaml
 # Intellij
 .idea
 
-# Docker
-.env
-

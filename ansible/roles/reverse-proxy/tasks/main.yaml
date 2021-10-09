@@ -1,0 +1,4 @@
+---
+# roles/reverse-proxy/tasks/traefik.yaml
+- name: Install and configure traefik with authelia
+  import_tasks: traefik.yaml
