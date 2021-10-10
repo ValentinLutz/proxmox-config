@@ -1,0 +1,22 @@
+---
+- name: Check if k3s-uninstall.sh exists
+  stat:
+    path: /usr/local/bin/k3s-uninstall.sh
+  register: uninstall_k3s_master
+
+- name: Uninstall k3s master
+  command:
+    cmd: sh k3s-uninstall.sh
+    chdir: /usr/local/bin
+  when: uninstall_k3s_master.stat.exists
+
+- name: Check if k3s-agent-uninstall.sh exists
+  stat:
+    path: /usr/local/bin/k3s-agent-uninstall.sh
+  register: uninstall_k3s_worker
+
+- name: Uninstall k3s worker
+  command:
+    cmd: sh k3s-agent-uninstall.sh
+    chdir: /usr/local/bin
+  when: uninstall_k3s_worker.stat.exists

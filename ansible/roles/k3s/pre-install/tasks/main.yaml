@@ -1,0 +1,14 @@
+---
+- name: Uninstall previously k3s installation
+  import_tasks: uninstall.yaml
+  when: k3s_clean_install == true
+
+- name: Ensure k3s directory exists
+  ansible.builtin.file:
+    path: /etc/k3s
+    state: directory
+
+- name: Get k3s installation script
+  ansible.builtin.get_url:
+    url: https://get.k3s.io
+    dest: /etc/k3s/k3s-install.sh

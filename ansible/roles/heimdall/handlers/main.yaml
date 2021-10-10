@@ -1,0 +1,9 @@
+---
+- name: Restart heimdall
+  community.docker.docker_compose:
+    project_name: heimdall
+    project_src: /etc/heimdall
+    state: present
+    remove_orphans: yes
+    recreate: always
+    restarted: yes

@@ -1,9 +1,0 @@
----
-- name: Restart heimdall
-  community.docker.docker_compose:
-    project_name: heimdall
-    project_src: /etc/dashboard
-    state: present
-    remove_orphans: yes
-    recreate: always
-    restarted: yes

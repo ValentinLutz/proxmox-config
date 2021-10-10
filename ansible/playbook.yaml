@@ -1,24 +1,32 @@
 ---
-- name: Install reverse-proxy
+- name: Install traefik reverse-proxy
   hosts: traefik
   become: yes
   vars_files:
     - vars/secrets.yaml
   roles:
-    - reverse-proxy
+    - traefik
 
-- name: Install vpn
+- name: Install wireguard vpn
   hosts: wireguard
   become: yes
   vars_files:
     - vars/secrets.yaml
   roles:
-    - vpn
+    - wireguard
 
-- name: Install dashboard
+- name: Install heimdall dashboard
   hosts: heimdall
   become: yes
   vars_files:
     - vars/secrets.yaml
   roles:
-    - dashboard
+    - heimdall
+
+- name: Install rancher dashboard
+  hosts: rancher
+  become: yes
+  vars_files:
+    - vars/secrets.yaml
+  roles:
+    - rancher

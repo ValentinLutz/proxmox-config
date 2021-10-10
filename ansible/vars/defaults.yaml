@@ -1,6 +1,7 @@
----
-kubernetes_version: 1.22.2
-kubernetes_apt_version: "{{ kubernetes_version }}-00"
-kubernetes_kubeadm_version: "v{{ kubernetes_version }}"
-kubernetes_master_ip: "{{ hostvars[groups['k8s_master'][0]]['ansible_default_ipv4'].address }}"
-kubernetes_cidr: 10.244.0.0/16
+###############################################################
+#                   Kubernetes variables                      #
+###############################################################
+k3s_load_balancer_ip: "{{ hostvars[groups['k3s_load_balancer'][0]]['ansible_default_ipv4'].address }}"
+k3s_port: 6443
+k3s_url: "https://{{ k3s_load_balancer_ip }}:{{ k3s_port }}"
+k3s_clean_install: false

@@ -1,0 +1,9 @@
+---
+- name: Initialize new k3s cluster
+  command:
+    cmd: sh k3s-install.sh
+    chdir: /etc/k3s
+  environment:
+    INSTALL_K3S_EXEC: server --cluster-init
+    K3S_DATASTORE_ENDPOINT: etcd
+    K3S_TOKEN: "{{ k3s_token }}"

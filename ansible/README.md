@@ -1,6 +1,9 @@
 # Ansible
 
 ## Preconditions
+``` bash
+export ANSIBLE_STDOUT_CALLBACK=debug
+```
 
 ### File secrets.yaml
 ``` yaml
@@ -30,7 +33,7 @@ wireguard_client_public_key:
 ###############################################################
 #                     Kubernetes secrets                       #
 ###############################################################
-kubernetes_token: 
+k3s_token: 
 ```
 
 ## Run all

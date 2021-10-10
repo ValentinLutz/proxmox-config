@@ -1,4 +1,0 @@
----
-# roles/kubernetes/tasks/prepare.yaml
-- name: Prepare hosts for kubernetes installation
-  import_tasks: prepare.yaml

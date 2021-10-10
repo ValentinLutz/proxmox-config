@@ -1,9 +1,0 @@
----
-- name: Reset Kubernetes component
-  shell: "kubeadm reset --force"
-
-- name: Join the Kubernetes cluster
-  shell: |
-    kubeadm join --token {{ kubernetes_token }} \
-                --discovery-token-unsafe-skip-ca-verification \
-                {{ kubernetes_master_ip }}:6443

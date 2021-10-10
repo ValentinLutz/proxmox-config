@@ -1,0 +1,10 @@
+---
+- name: Install k3s master
+  command:
+    cmd: sh k3s-install.sh
+    chdir: /etc/k3s
+  environment:
+    INSTALL_K3S_EXEC: server
+    K3S_DATASTORE_ENDPOINT: etcd
+    K3S_URL: "{{ k3s_url }}"
+    K3S_TOKEN: "{{ k3s_token }}"

@@ -1,0 +1,13 @@
+---
+- name: Ensure config directory exists
+  ansible.builtin.file:
+    path: /etc/heimdall
+    state: directory
+
+- name: Copy heimdall config files
+  ansible.builtin.copy:
+    src: docker-compose.yaml
+    dest: /etc/heimdall
+    mode: 0644
+  notify:
+   - Restart heimdall
