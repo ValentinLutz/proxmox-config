@@ -9,11 +9,17 @@ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5
 ## Install letsencrypt
 
 ``` bash
-kubectl apply -f letsencrypt.yaml
+kubectl apply -f letsencrypt
 ```
 
 ## Install authelia
 
 ``` bash
-kubectl apply -f authelia.yaml
+kubectl apply -f authelia
+```
+
+## Install homer
+
+``` bash
+kubectl apply -f homer
 ```
