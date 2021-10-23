@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "vpn" {
+resource "proxmox_vm_qemu" "wireguard" {
   name = "vpn-wireguard"
   target_node = "proxmox"
   vmid = 102
-  desc = "Wireguard VPN."
+  desc = "VPN for proxmox virtual machines."
   onboot = true
   boot = "order=scsi0"
   agent = 1

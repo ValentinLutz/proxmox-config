@@ -79,10 +79,10 @@ resource "proxmox_vm_qemu" "master" {
   agent = 1
   clone = var.proxmox_cloud_init_template
   full_clone = true
-  memory = 8192
+  memory = 4096
   balloon = 0
   sockets = 1
-  cores = 4
+  cores = 2
   hotplug = "disk,network,usb"
   scsihw = "virtio-scsi-pci"
   tags = "k3s, kubernetes, master"
@@ -99,7 +99,7 @@ resource "proxmox_vm_qemu" "master" {
   }
   disk {
     type = "scsi"
-    size = "32G"
+    size = "8G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
@@ -139,7 +139,7 @@ resource "proxmox_vm_qemu" "worker" {
   }
   disk {
     type = "scsi"
-    size = "32G"
+    size = "64G"
     slot = 0
     format = "qcow2"
     storage = "local-lvm"
