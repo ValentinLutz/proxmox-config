@@ -1,0 +1,8 @@
+---
+- name: Install wireguard vpn
+  hosts: wireguard
+  become: yes
+  vars_files:
+    - vars/secrets.yaml
+  roles:
+    - wireguard
