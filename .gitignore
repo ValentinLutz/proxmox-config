@@ -13,6 +13,10 @@ secret.tfvars
 # Ansible
 secrets.yaml
 
+# Kubernetes
+secret.yaml
+user-config-map.yaml
+
 # Intellij
 .idea
 

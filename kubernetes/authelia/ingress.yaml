@@ -16,6 +16,9 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: authelia-service
-              servicePort: 80
+              service:
+                name: authelia-service
+                port:
+                  number: 80

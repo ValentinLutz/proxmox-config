@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: authelia-middleware
+  namespace: authelia
+spec:
+  forwardAuth:
+    address: http://authelia-service.authelia/api/verify?rd=https://login.monke.science/

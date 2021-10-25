@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: authelia-user-config-map
+  namespace: authelia
+  labels:
+    app: authelia
+# https://www.authelia.com/docs/configuration/authentication/file.html
+data: |
+  users:
+    john:
+      displayname:
+      password:
+      email:
+      groups:
+        - admins
+        - dev
