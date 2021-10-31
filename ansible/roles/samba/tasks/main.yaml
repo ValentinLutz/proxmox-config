@@ -11,6 +11,11 @@
     fstype: ext4
     state: mounted
 
+- name: Change media permissions
+  ansible.builtin.file:
+    path: /mnt/media
+    mode: 0777
+
 - name: Install samba
   ansible.builtin.apt:
     name: samba
