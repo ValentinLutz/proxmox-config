@@ -1,0 +1,38 @@
+---
+- name: Create a ext4 filesystem
+  filesystem:
+    fstype: ext4
+    dev: /dev/sdb
+
+- name: Mount media disk
+  ansible.posix.mount:
+    path: /mnt/media
+    src: /dev/sdb
+    fstype: ext4
+    state: mounted
+
+- name: Install samba
+  ansible.builtin.apt:
+    name: samba
+    state: present
+
+- name: Create samba server config
+  ansible.builtin.template:
+    dest: /etc/samba/smb.conf
+    src: smb.conf
+    mode: 0600
+  notify:
+    - Restart samba smbd
+    - Restart samba nmbd
+
+- name: Start samba smbd and enable on boot
+  ansible.builtin.systemd:
+    name: smbd
+    enabled: yes
+    state: started
+
+- name: Start samba nmbd and enable on boot
+  ansible.builtin.systemd:
+    name: nmbd
+    enabled: yes
+    state: started

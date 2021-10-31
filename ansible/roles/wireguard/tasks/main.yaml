@@ -1,4 +1,26 @@
 ---
-# roles/vpn/tasks/wireguard.yaml
-- name: Install and configure wireguard
-  import_tasks: wireguard.yaml
+- name: Enable ip forwarding
+  ansible.builtin.sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    state: present
+    sysctl_set: yes
+    reload: yes
+
+- name: Install wireguard
+  ansible.builtin.apt:
+    name: wireguard
+    state: present
+
+- name: Create wireguard server config
+  ansible.builtin.template:
+    dest: /etc/wireguard/wg0.conf
+    src: wg0.conf
+    mode: 0600
+  notify: Restart wireguard
+
+- name: Start wireguard and enable on boot
+  ansible.builtin.systemd:
+    name: wg-quick@wg0
+    enabled: yes
+    state: started
