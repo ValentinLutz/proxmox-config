@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: authelia-config-config-map
+  name: authelia-config-map
   namespace: authelia
   labels:
     app: authelia

@@ -16,6 +16,16 @@ spec:
         app: authelia
     spec:
       enableServiceLinks: false
+      volumes:
+        - name: config-volume
+          configMap:
+            name: authelia-config-map
+        - name: user-volume
+          configMap:
+            name: authelia-user-config-map
+        - name: database-volume
+          emptyDir:
+            { }
       containers:
         - name: authelia
           image: authelia/authelia:4
@@ -41,13 +51,3 @@ spec:
               subPath: user
             - name: database-volume
               mountPath: /config/database
-      volumes:
-        - name: config-volume
-          configMap:
-            name: authelia-config-config-map
-        - name: user-volume
-          configMap:
-            name: authelia-user-config-map
-        - name: database-volume
-          emptyDir:
-            { }
