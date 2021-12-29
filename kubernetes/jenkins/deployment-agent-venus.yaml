@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-agent-venus
+  namespace: jenkins
+  labels:
+    app: jenkins-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-agent
+  template:
+    metadata:
+      labels:
+        app: jenkins-agent
+    spec:
+      containers:
+        - name: jenkins-agent-venus
+          image: jenkins/inbound-agent:jdk11
+          env:
+          - name: JENKINS_URL
+            value: http://jenkins-service:80
+          - name: JENKINS_AGENT_NAME
+            value: venus
+          - name: JENKINS_SECRET
+            value: 

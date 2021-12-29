@@ -6,6 +6,13 @@
 kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml
 ```
 
+## Install lonhhorn
+
+``` bash
+kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
+```
+
+
 ## Install letsencrypt
 
 ``` bash
