@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: jenkins-agent-venus
-          image: jenkins/inbound-agent:jdk11
+          image: vlutz/inbound-agent:jdk11 # jenkins/inbound-agent:jdk11
           env:
           - name: JENKINS_URL
             value: http://jenkins-service:80
