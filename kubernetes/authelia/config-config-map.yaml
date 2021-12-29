@@ -50,3 +50,5 @@ data:
           policy: one_factor
         - domain: homer.monke.science
           policy: one_factor
+        - domain: jenkins.monke.science
+          policy: one_factor

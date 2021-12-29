@@ -23,3 +23,9 @@ kubectl apply -f authelia
 ``` bash
 kubectl apply -f homer
 ```
+
+## Install Jenkins
+
+``` bash
+kubectl apply -f jenkins
+```

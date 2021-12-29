@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+  labels:
+    app: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+      volumes:
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-persistent-volume-claim
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:jdk11
+          volumeMounts:
+            - mountPath: "/var/jenkins_home"
+              name: jenkins-home
+          ports:
+            - containerPort: 8080
