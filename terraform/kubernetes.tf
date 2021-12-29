@@ -119,7 +119,7 @@ resource "proxmox_vm_qemu" "worker" {
   agent = 1
   clone = var.proxmox_cloud_init_template
   full_clone = true
-  memory = 8192
+  memory = 32768
   balloon = 0
   sockets = 1
   cores = 4
