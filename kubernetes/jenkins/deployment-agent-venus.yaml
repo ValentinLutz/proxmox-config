@@ -31,11 +31,4 @@ spec:
             - name: JENKINS_SECRET
               value: 
             - name: DOCKER_HOST
-              value: 
-          volumeMounts:
-            - name: config-volume
-              mountPath: /home/jenkins/.ssh/known_hosts
-              subPath: known-hosts
-            - name: config-volume
-              mountPath: /home/jenkins/.ssh/id_rsa
-              subPath: ssh-key
+              value: tcp://192.168.134.110:2375
