@@ -32,6 +32,7 @@ data:
       domain: monke.science
 
     storage:
+      # encryption_key: AUTHELIA_STORAGE_ENCRYPTION_KEY
       local:
         path: /config/database/db.sqlite3
 

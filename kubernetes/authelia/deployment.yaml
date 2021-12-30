@@ -43,6 +43,11 @@ spec:
                 secretKeyRef:
                   name: authelia-secret
                   key: notifier_smtp_password
+            - name: AUTHELIA_STORAGE_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: authelia-secret
+                  key: storage.encryption_key
           volumeMounts:
             - name: config-volume
               mountPath: /config/configuration.yml
