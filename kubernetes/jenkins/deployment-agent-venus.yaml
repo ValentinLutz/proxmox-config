@@ -18,6 +18,7 @@ spec:
       containers:
         - name: jenkins-agent-venus
           image: vlutz/inbound-agent:jdk17-preview # jenkins/inbound-agent:jdk11
+          imagePullPolicy: Always
           env:
           - name: JENKINS_URL
             value: http://jenkins-service:80

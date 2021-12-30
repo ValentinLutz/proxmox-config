@@ -29,6 +29,7 @@ spec:
       containers:
         - name: authelia
           image: authelia/authelia:4
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:

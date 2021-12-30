@@ -22,6 +22,7 @@ spec:
       containers:
         - name: homer
           image: b4bz/homer:21.09.2
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           volumeMounts:
