@@ -15,14 +15,27 @@ spec:
       labels:
         app: jenkins-agent
     spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: jenkins-agent-config-map
       containers:
         - name: jenkins-agent-venus
           image: vlutz/inbound-agent:jdk17-preview # jenkins/inbound-agent:jdk11
           imagePullPolicy: Always
           env:
-          - name: JENKINS_URL
-            value: http://jenkins-service:80
-          - name: JENKINS_AGENT_NAME
-            value: venus
-          - name: JENKINS_SECRET
-            value: 
+            - name: JENKINS_URL
+              value: http://jenkins-service:80
+            - name: JENKINS_AGENT_NAME
+              value: venus
+            - name: JENKINS_SECRET
+              value: 
+            - name: DOCKER_HOST
+              value: 
+          volumeMounts:
+            - name: config-volume
+              mountPath: /home/jenkins/.ssh/known_hosts
+              subPath: known-hosts
+            - name: config-volume
+              mountPath: /home/jenkins/.ssh/id_rsa
+              subPath: ssh-key
