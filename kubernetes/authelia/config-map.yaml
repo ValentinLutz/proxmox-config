@@ -51,6 +51,8 @@ data:
           policy: one_factor
         - domain: homer.monke.science
           policy: one_factor
+        - domain: go.monke.science
+          policy: bypass
         - domain: jenkins.monke.science
           resources:
             - "/github-webhook/"
