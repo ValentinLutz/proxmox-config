@@ -1,8 +1,9 @@
 terraform {
+  required_version = "1.3.6"
   required_providers {
     proxmox = {
       source = "Telmate/proxmox"
-      version = "2.8.0"
+      version = "2.9.11"
     }
   }
 }
@@ -29,7 +30,7 @@ variable "proxmox_password" {
 
 variable "proxmox_cloud_init_template" {
   type = string
-  default = "ubuntu-2004-cloud-init-template"
+  default = "ubuntu-2204-cloud-init-template"
 }
 
 # ENV TF_VAR_ssh_user
