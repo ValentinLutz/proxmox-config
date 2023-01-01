@@ -3,6 +3,6 @@
   hosts: wireguard
   become: yes
   vars_files:
-    - vars/secrets.yaml
+    - ../vars/wireguard.secrets.yaml
   roles:
-    - wireguard
+    - ../roles/wireguard

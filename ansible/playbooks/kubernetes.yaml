@@ -3,7 +3,7 @@
   hosts: k3s_load_balancer
   become: yes
   vars_files:
-    - vars/defaults.yaml
+    - vars/kubernetes.defaults.yaml
     - vars/secrets.yaml
   roles:
     - k3s/load-balancer
@@ -12,7 +12,7 @@
   hosts: k3s_master
   become: yes
   vars_files:
-    - vars/defaults.yaml
+    - vars/kubernetes.defaults.yaml
     - vars/secrets.yaml
   roles:
     - k3s/master
@@ -21,7 +21,7 @@
   hosts: k3s_master_join
   become: yes
   vars_files:
-    - vars/defaults.yaml
+    - vars/kubernetes.defaults.yaml
     - vars/secrets.yaml
   roles:
     - k3s/master-join
@@ -30,7 +30,7 @@
   hosts: k3s_worker
   become: yes
   vars_files:
-    - vars/defaults.yaml
+    - vars/kubernetes.defaults.yaml
     - vars/secrets.yaml
   roles:
     - k3s/worker

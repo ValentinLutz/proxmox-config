@@ -11,7 +11,7 @@ override.tf.json
 secrets.tfvars
 
 # Ansible
-secrets.yaml
+*.secrets.yaml
 
 # Kubernetes
 secret.yaml
