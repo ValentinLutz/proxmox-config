@@ -1,0 +1,16 @@
+---
+- name: Create new single node rke2 cluster
+  command:
+    cmd: sh rke2-install.sh
+    chdir: /etc/rke2
+
+- name: Start rke2 and enable on boot
+  ansible.builtin.systemd:
+    name: rke2-server.service
+    enabled: yes
+    state: started
+
+- name: Copy kubeconfig to local system
+  ansible.builtin.fetch:
+    src: /etc/rancher/rke2/rke2.yaml
+    dest: ./

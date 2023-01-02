@@ -12,6 +12,7 @@ secrets.tfvars
 
 # Ansible
 *.secrets.yaml
+rke2.yaml
 
 # Kubernetes
 secret.yaml

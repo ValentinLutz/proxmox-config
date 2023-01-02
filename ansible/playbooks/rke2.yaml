@@ -1,0 +1,8 @@
+---
+- name: Create rke2 single node cluster
+  hosts: k8s_rke2
+  become: yes
+  vars_files:
+    - ../vars/rke2.defaults.yaml
+  roles:
+    - ../roles/rke2/master

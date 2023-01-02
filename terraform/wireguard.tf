@@ -11,7 +11,7 @@ resource "proxmox_vm_qemu" "wireguard" {
   memory                  = 2048
   balloon                 = 0
   sockets                 = 1
-  cores                   = 2
+  cores                   = 1
   hotplug                 = "disk,network,usb"
   scsihw                  = "virtio-scsi-pci"
   tags                    = "vpn;wireguard"
