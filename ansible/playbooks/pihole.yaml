@@ -1,0 +1,8 @@
+---
+- name: Install pihole
+  hosts: dns_pihole
+  become: yes
+  vars_files:
+    - ../vars/pihole.secrets.yaml
+  roles:
+    - ../roles/pihole

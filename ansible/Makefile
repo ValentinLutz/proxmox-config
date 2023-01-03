@@ -7,5 +7,8 @@ help::
 apply-wireguard:: ## Install and configure wireguard
 	ansible-playbook playbooks/wireguard.yaml
 
+apply-pihole:: ## Install and configure pihole
+	ansible-playbook playbooks/pihole.yaml
+
 apply-rke2:: ## Install and configure rke2 single node cluster
 	ansible-playbook playbooks/rke2.yaml

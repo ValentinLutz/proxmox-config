@@ -1,0 +1,21 @@
+---
+- name: Ensure pihole directory exists
+  ansible.builtin.file:
+    path: /etc/pihole
+    state: directory
+
+- name: Create /etc/pihole/setupVars.conf
+  ansible.builtin.template:
+    dest: /etc/pihole/setupVars.conf
+    src: setupVars.conf
+    mode: 0644
+
+- name: Get pihole installation script
+  ansible.builtin.get_url:
+    url: https://install.pi-hole.net
+    dest: /etc/pihole/pihole-install.sh
+
+- name: Install pihole
+  command:
+    cmd: bash pihole-install.sh --unattended
+    chdir: /etc/pihole

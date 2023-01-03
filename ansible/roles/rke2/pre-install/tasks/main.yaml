@@ -1,7 +1,7 @@
 ---
 - name: Uninstall previously rke2 installation
   import_tasks: uninstall.yaml
-  when: rke2_clean_install == true
+  when: clean_install == true
 
 - name: Ensure rke2 directory exists
   ansible.builtin.file:
