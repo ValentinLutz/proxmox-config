@@ -17,7 +17,7 @@ resource "proxmox_vm_qemu" "rke2" {
   tags                    = "k8s;kubernetes;rke2"
   os_type                 = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
-  ipconfig0               = "ip=192.168.134.110/24,gw=192.168.134.1"
+  ipconfig0               = "ip=192.168.134.110/24,gw=192.168.134.1,ip6=auto"
   ciuser                  = var.ssh_user
   cipassword              = var.ssh_password
   sshkeys                 = var.ssh_pub_keys

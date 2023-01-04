@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.3.6"
+  required_version = "1.3.7"
   required_providers {
     proxmox = {
       source = "Telmate/proxmox"
@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "proxmox" {
-  pm_api_url = "https://proxmox:8006/api2/json"
+  pm_api_url = "https://192.168.134.100:8006/api2/json"
   pm_tls_insecure = true
   pm_parallel = 4
   pm_user = var.proxmox_user
