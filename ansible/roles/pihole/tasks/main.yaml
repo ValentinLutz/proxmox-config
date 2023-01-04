@@ -19,3 +19,10 @@
   command:
     cmd: bash pihole-install.sh --unattended
     chdir: /etc/pihole
+
+- name: Create /etc/pihole/custom.list
+  ansible.builtin.template:
+    dest: /etc/pihole/custom.list
+    src: custom.list
+    mode: 0644
+  notify: Restart pihole
