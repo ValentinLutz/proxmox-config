@@ -5,4 +5,4 @@
   vars_files:
     - ../vars/rke2.defaults.yaml
   roles:
-    - ../roles/rke2/master
+    - ../roles/rke2

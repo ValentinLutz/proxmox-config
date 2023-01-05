@@ -1,3 +1,0 @@
----
-dependencies:
-  - { role: roles/rke2/pre-install }
