@@ -15,7 +15,7 @@ secrets.tfvars
 rke2.yaml
 
 # Kubernetes
-secret.yaml
+**.secret.yaml
 user-config-map.yaml
 
 # Intellij

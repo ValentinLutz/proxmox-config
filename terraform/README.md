@@ -1,6 +1,10 @@
-# Terraform
+# terraform
 
-## Create cloud image template in proxmox
+```shell
+make help
+```
+
+## create cloud image template in proxmox
 
 ```shell
 wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
@@ -16,7 +20,7 @@ qm set 1000 --serial0 socket --vga serial0
 qm template 1000
 ```
 
-## Create file for secrets
+## create file for secrets
 
 secrets.tfvars
 

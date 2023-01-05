@@ -1,6 +1,10 @@
-# Ansible
+# ansible
 
-## Create files for secrets
+```shell
+make help
+```
+
+## create files for secrets
 
 wireguard.secrets.yaml
 
@@ -13,5 +17,6 @@ pihole.secrets.yaml
 
 ```yaml
 # needs to be double sha256 encoded
+# optional
 web_password:
 ```
