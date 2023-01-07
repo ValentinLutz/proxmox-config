@@ -1,8 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: external-dns
-  namespace: external-dns
+  name: external-dns-deployment
 spec:
   strategy:
     type: Recreate
@@ -14,7 +13,7 @@ spec:
       labels:
         app: external-dns
     spec:
-      serviceAccountName: external-dns
+      serviceAccountName: external-dns-service-account
       containers:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.13.1 # todo wait for new release with pihole integration https://github.com/kubernetes-sigs/external-dns/releases
@@ -36,6 +35,6 @@ spec:
             - --policy=upsert-only
             - --provider=pihole
             # Change this to the actual address of your Pi-hole web server
-            - --pihole-server=http://pihole.internal
+            - --pihole-server=http://pihole.box
       securityContext:
         fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes token files

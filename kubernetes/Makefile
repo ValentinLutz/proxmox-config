@@ -6,10 +6,10 @@ help::
 
 
 apply.external-dns:: ## Apply external dns
-	kubectl apply -f external-dns
+	kubectl apply --kustomize external-dns --prune -l app=external-dns
 
 delete.external-dns:: ## Delete external dns
-	kubectl delete -f external-dns
+	kubectl delete --kustomize external-dns
 
 
 apply.dashboard:: ## Apply kubernetes dashboard
