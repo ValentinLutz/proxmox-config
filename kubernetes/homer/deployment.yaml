@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: homer
-  namespace: homer
-  labels:
-    app: homer
+  name: homer-deployment
 spec:
   replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: homer
@@ -21,11 +19,11 @@ spec:
             name: homer-config-map
       containers:
         - name: homer
-          image: b4bz/homer:21.09.2
+          image: b4bz/homer:v22.11.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           volumeMounts:
             - name: config-volume
               mountPath: /www/assets/config.yml
-              subPath: config
+              subPath: config.yml

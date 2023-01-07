@@ -18,3 +18,10 @@ apply.dashboard:: ## Apply kubernetes dashboard
 
 delete.dashboard:: ## Delete kubernetes dashboard
 	kubectl delete -f dashboard
+
+
+apply.homer:: ## Apply homer dashboard
+	kubectl apply --kustomize homer --prune -l app=homer
+
+delete.homer:: ## Delete homer dashboard
+	kubectl delete --kustomize homer

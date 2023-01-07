@@ -2,31 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: homer-ingress
-  namespace: homer
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    cert-manager.io/cluster-issuer: letsencrypt
-    traefik.ingress.kubernetes.io/router.middlewares: authelia-authelia-middleware@kubernetescrd
 spec:
-  tls:
-    - secretName: homer.monke.science-tls
-      hosts:
-        - homer.monke.science
-    - secretName: monke.science-tls
-      hosts:
-        - monke.science
+  ingressClassName: nginx
   rules:
-    - host: monke.science
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: homer-service
-                port:
-                  number: 80
-    - host: homer.monke.science
+    - host: homer.rke2.box
       http:
         paths:
           - path: /

@@ -1,0 +1,48 @@
+# Homepage configuration
+# See https://fontawesome.com/v5/search for icons options
+
+header: false # Set to false to hide the header
+
+columns: "5" # "auto" or number (must be a factor of 12: 1, 2, 3, 4, 6, 12)
+connectivityCheck: false # whether you want to display a message when the apps are not accessible anymore (VPN disconnected for example).
+
+# Set the default layout and color scheme
+defaults:
+  layout: columns # Either 'columns', or 'list'
+  colorTheme: auto # One of 'auto', 'light', or 'dark'
+
+# Optional theming
+theme: default # 'default' or one of the themes available in 'src/assets/themes'.
+
+services:
+  - name: "Network"
+    icon: "fas fa-network-wired"
+    items:
+      - name: "FRITZ!Box"
+        url: "http://fritz.box"
+        logo: "http://fritz.box/css/rd/logos/logo_fritzDiamond.svg"
+      - name: "Pi-hole"
+        url: "http://pihole.box/admin"
+        logo: "http://pihole.box/admin/img/logo.svg"
+        type: "PiHole"
+  - name: "Server"
+    icon: "fa-solid fa-server"
+    items:
+      - name: "Proxmox"
+        url: "https://proxmox.box:8006"
+        logo: "https://192.168.134.100:8006/pve2/images/logo-128.png"
+#        type: "Proxmox"
+#        node: "proxmox"
+#        warning_value: 50
+#        danger_value: 80
+#        api_token: "PVEAPIToken=root@pam!your-api-token-name=your-api-token-key"
+#        hide: [ ] # hides information. Possible values are "vms", "vms_total", "lxcs", "lxcs_total", "disk", "mem" and "cpu".
+  - name: "Monitoring"
+    icon: "fas fa-heartbeat"
+    items:
+      - name: "Grafana"
+        url: ""
+        logo: ""
+      - name: "Prometheus"
+        url: ""
+        logo: ""
