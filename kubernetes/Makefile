@@ -12,6 +12,13 @@ delete.external-dns:: ## Delete external dns
 	kubectl delete --kustomize external-dns
 
 
+apply.grafana:: ## Apply grafana
+	kubectl apply --kustomize grafana --prune -l app=grafana
+
+delete.grafana:: ## Delete grafana
+	kubectl delete --kustomize grafana
+
+
 apply.dashboard:: ## Apply kubernetes dashboard
 	kubectl apply --kustomize dashboard --prune -l app=kubernetes-dashboard
 
