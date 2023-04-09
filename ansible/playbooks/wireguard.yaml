@@ -1,7 +1,7 @@
 ---
 - name: Install wireguard vpn
   hosts: vpn_wireguard
-  become: yes
+  become: true
   vars_files:
     - ../vars/wireguard.secrets.yaml
   roles:
