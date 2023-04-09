@@ -31,15 +31,12 @@ services:
       - name: "Proxmox"
         url: "https://proxmox.box:8006"
         logo: "https://192.168.134.100:8006/pve2/images/logo-128.png"
-#        type: "Proxmox"
-#        node: "proxmox"
-#        warning_value: 50
-#        danger_value: 80
-#        api_token: "PVEAPIToken=root@pam!your-api-token-name=your-api-token-key"
-#        hide: [ ] # hides information. Possible values are "vms", "vms_total", "lxcs", "lxcs_total", "disk", "mem" and "cpu".
-  - name: "Monitoring"
+  - name: "Kubernetes"
     icon: "fas fa-heartbeat"
     items:
+      - name: "Kubernetes Dashboard"
+        url: "https://dashboard.rke2.box"
+        logo: "https://dashboard.rke2.box/assets/images/kubernetes-logo.svg"
       - name: "Grafana"
         url: ""
         logo: ""

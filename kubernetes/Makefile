@@ -13,11 +13,10 @@ delete.external-dns:: ## Delete external dns
 
 
 apply.dashboard:: ## Apply kubernetes dashboard
-	kubectl apply -f dashboard && \
-    	kubectl -n kubernetes-dashboard create token admin-user
+	kubectl apply --kustomize dashboard --prune -l app=kubernetes-dashboard
 
 delete.dashboard:: ## Delete kubernetes dashboard
-	kubectl delete -f dashboard
+	kubectl delete --kustomize dashboard
 
 
 apply.homer:: ## Apply homer dashboard
