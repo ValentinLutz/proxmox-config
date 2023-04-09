@@ -16,7 +16,7 @@ spec:
       serviceAccountName: external-dns-service-account
       containers:
         - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.13.1 # todo wait for new release with pihole integration https://github.com/kubernetes-sigs/external-dns/releases
+          image: registry.k8s.io/external-dns/external-dns:v0.13.4
           # If authentication is disabled and/or you didn't create
           # a secret, you can remove this block.
           #          envFrom:
@@ -35,6 +35,7 @@ spec:
             - --policy=upsert-only
             - --provider=pihole
             # Change this to the actual address of your Pi-hole web server
-            - --pihole-server=http://pihole.box
+            - --pihole-server=http://192.168.134.102
+            - --pihole-password=wtf # Needs to have a value, even if authentication is disabled
       securityContext:
         fsGroup: 65534 # For ExternalDNS to be able to read Kubernetes token files
