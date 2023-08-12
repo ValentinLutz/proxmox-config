@@ -1,0 +1,12 @@
+---
+- name: Install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Create nginx server config
+  ansible.builtin.template:
+    dest: /etc/nginx/nginx.conf
+    src: nginx.conf
+    mode: '644'
+  notify: Restart nginx

@@ -1,0 +1,10 @@
+---
+- name: Install nginx reverse proxy
+  hosts: reverse_proxy_nginx
+  become: true
+  vars_files:
+    - ../vars/nginx.secrets.yaml
+  roles:
+    - ../roles/ubuntu
+    - ../roles/certbot
+    - ../roles/nginx

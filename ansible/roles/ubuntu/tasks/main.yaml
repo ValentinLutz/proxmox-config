@@ -1,0 +1,7 @@
+---
+- name: Upgrade ubuntu
+  ansible.builtin.apt:
+    autoremove: true
+    autoclean: true
+    update_cache: true
+    upgrade: safe

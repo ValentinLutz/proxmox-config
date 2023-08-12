@@ -1,5 +1,5 @@
-resource "proxmox_vm_qemu" "haproxy" {
-  name                    = "reverse-proxy-haproxy"
+resource "proxmox_vm_qemu" "nginx" {
+  name                    = "reverse-proxy-nginx"
   target_node             = "proxmox"
   vmid                    = 101
   desc                    = "Reverse proxy for proxmox virtual machines."
@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "haproxy" {
   cores                   = 1
   hotplug                 = "disk,network,usb"
   scsihw                  = "virtio-scsi-pci"
-  tags                    = "reverse-proxy;haproxy"
+  tags                    = "reverse-proxy;nginx"
   os_type                 = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0               = "ip=192.168.134.101/24,gw=192.168.134.1,ip6=auto"

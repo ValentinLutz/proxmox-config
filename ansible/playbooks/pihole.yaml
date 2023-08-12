@@ -5,4 +5,5 @@
   vars_files:
     - ../vars/pihole.secrets.yaml
   roles:
+    - ../roles/ubuntu
     - ../roles/pihole
