@@ -1,8 +1,8 @@
-resource "proxmox_vm_qemu" "wireguard" {
-  name                    = "vpn-wireguard"
+resource "proxmox_vm_qemu" "haproxy" {
+  name                    = "reverse-proxy-haproxy"
   target_node             = "proxmox"
   vmid                    = 101
-  desc                    = "VPN for proxmox virtual machines."
+  desc                    = "Reverse proxy for proxmox virtual machines."
   onboot                  = true
   boot                    = "order=scsi0;ide2"
   agent                   = 1
@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "wireguard" {
   cores                   = 1
   hotplug                 = "disk,network,usb"
   scsihw                  = "virtio-scsi-pci"
-  tags                    = "vpn;wireguard"
+  tags                    = "reverse-proxy;haproxy"
   os_type                 = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0               = "ip=192.168.134.101/24,gw=192.168.134.1,ip6=auto"
