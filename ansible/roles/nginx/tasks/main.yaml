@@ -17,20 +17,6 @@
     mode: '644'
   notify: Restart nginx
 
-- name: Create grafana.dojo.monke.science
-  ansible.builtin.template:
-    dest: /etc/nginx/sites-enabled/grafana.dojo.monke.science
-    src: grafana.dojo.monke.science
-    mode: '644'
-  notify: Restart nginx
-
-- name: Create monke.science
-  ansible.builtin.template:
-    dest: /etc/nginx/sites-enabled/mimir.dojo.monke.science
-    src: mimir.dojo.monke.science
-    mode: '644'
-  notify: Restart nginx
-
 - name: Create nginx server config
   ansible.builtin.template:
     dest: /etc/nginx/nginx.conf
