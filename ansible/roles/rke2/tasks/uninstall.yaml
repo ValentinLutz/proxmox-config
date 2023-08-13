@@ -1,10 +1,10 @@
 ---
-- name: Check if rke2-uninstall.sh exists
+- name: check if rke2-uninstall.sh exists
   stat:
     path: /usr/local/bin/rke2-uninstall.sh
   register: uninstall_rke2
 
-- name: Uninstall rke2 master node
+- name: uninstall rke2 master node
   command:
     cmd: sh rke2-uninstall.sh
     chdir: /usr/local/bin

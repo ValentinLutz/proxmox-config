@@ -1,5 +1,5 @@
 ---
-- name: Upgrade ubuntu
+- name: upgrade ubuntu
   ansible.builtin.apt:
     autoremove: true
     autoclean: true

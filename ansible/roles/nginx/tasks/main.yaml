@@ -1,34 +1,34 @@
 ---
-- name: Install nginx
+- name: install nginx
   ansible.builtin.apt:
     name: nginx
     state: present
 
-- name: Delete old forwards
+- name: delete old forwards
   ansible.builtin.file:
     state: absent
     path: /etc/nginx/sites-enabled
 
-- name: Create forwards
+- name: create forwards
   ansible.builtin.copy:
     dest: /etc/nginx/
     src: sites-enabled
     mode: '644'
-  notify: Restart nginx
+  notify: restart nginx
 
-- name: Create nginx server config
+- name: create nginx server config
   ansible.builtin.template:
     dest: /etc/nginx/nginx.conf
     src: nginx.conf
     mode: '644'
-  notify: Restart nginx
+  notify: restart nginx
 
 # certbot revoke --cert-name example.com
-- name: Creates tls certificates
+- name: creates tls certificates
   loop:
     - monke.science
     - grafana.dojo.monke.science
   ansible.builtin.command: certbot --non-interactive --nginx -d {{ item }}
   args:
     creates: /etc/letsencrypt/live/{{ item }}/cert.pem
-  notify: Restart nginx
+  notify: restart nginx

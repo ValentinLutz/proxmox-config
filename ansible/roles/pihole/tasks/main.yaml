@@ -1,36 +1,36 @@
 ---
-- name: Ensure pihole directory exists
+- name: ensure pihole directory exists
   ansible.builtin.file:
     path: /etc/pihole
     state: directory
     mode: '755'
 
-- name: Create /etc/pihole/setupVars.conf
+- name: create /etc/pihole/setupVars.conf
   ansible.builtin.template:
     dest: /etc/pihole/setupVars.conf
     src: setupVars.conf
     mode: '644'
 
-- name: Get pihole installation script
+- name: get pihole installation script
   ansible.builtin.get_url:
     url: https://install.pi-hole.net
     dest: /etc/pihole/pihole-install.sh
 
-- name: Install pihole
+- name: install pihole
   command:
     cmd: bash pihole-install.sh --unattended
     chdir: /etc/pihole
 
-- name: Create /etc/pihole/pihole-FTL.conf
+- name: create /etc/pihole/pihole-FTL.conf
   ansible.builtin.template:
     dest: /etc/pihole/pihole-FTL.conf
     src: pihole-FTL.conf
     mode: '644'
-  notify: Restart pihole
+  notify: restart pihole
 
-- name: Create /etc/pihole/custom.list
+- name: create /etc/pihole/custom.list
   ansible.builtin.template:
     dest: /etc/pihole/custom.list
     src: custom.list
     mode: '644'
-  notify: Restart pihole
+  notify: restart pihole

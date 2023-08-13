@@ -1,31 +1,31 @@
 ---
-- name: Uninstall previously rke2 installation
+- name: uninstall previously rke2 installation
   import_tasks: uninstall.yaml
   when: clean_install == true
 
-- name: Ensure rke2 directory exists
+- name: ensure rke2 directory exists
   ansible.builtin.file:
     path: /etc/rke2
     state: directory
     mode: '755'
 
-- name: Get rke2 installation script
+- name: get rke2 installation script
   ansible.builtin.get_url:
     url: https://get.rke2.io
     dest: /etc/rke2/rke2-install.sh
 
-- name: Create new single node rke2 cluster
+- name: create new single node rke2 cluster
   command:
     cmd: sh rke2-install.sh
     chdir: /etc/rke2
 
-- name: Start rke2 and enable on boot
+- name: start rke2 and enable on boot
   ansible.builtin.systemd:
     name: rke2-server.service
     enabled: yes
     state: started
 
-- name: Copy kubeconfig to local system
+- name: copy kubeconfig to local system
   ansible.builtin.fetch:
     src: /etc/rancher/rke2/rke2.yaml
     dest: ./

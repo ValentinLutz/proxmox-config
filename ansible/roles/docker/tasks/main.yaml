@@ -1,0 +1,41 @@
+---
+- name: install dependencies
+  ansible.builtin.apt:
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg
+    state: present
+
+- name: add docker gpg key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add docker repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: install docker
+  ansible.builtin.apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+  notify: restart docker
+
+- name: add docker group
+  ansible.builtin.group:
+      name: docker
+      state: present
+
+- name: add user to docker group
+  ansible.builtin.user:
+      name: boxbox
+      groups: docker
+      append: yes
+      state: present

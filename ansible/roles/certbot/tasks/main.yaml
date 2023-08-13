@@ -1,10 +1,10 @@
 ---
-- name: Install certbot
+- name: install certbot
   ansible.builtin.apt:
     name: certbot
     state: present
 
-- name: Install nginx plugin
+- name: install nginx plugin
   ansible.builtin.apt:
     name: python3-certbot-nginx
     state: present
