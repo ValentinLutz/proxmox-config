@@ -1,6 +1,0 @@
-# kubernetes
-
-```shell
-make help
-```
-

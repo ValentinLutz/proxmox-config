@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "nginx" {
   cores                   = 1
   hotplug                 = "disk,network,usb"
   scsihw                  = "virtio-scsi-pci"
-  tags                    = "reverse-proxy;nginx"
+  tags                    = "nginx;reverse-proxy"
   os_type                 = "cloud-init"
   cloudinit_cdrom_storage = "local-lvm"
   ipconfig0               = "ip=192.168.134.101/24,gw=192.168.134.1,ip6=auto"
