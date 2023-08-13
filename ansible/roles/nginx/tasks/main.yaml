@@ -4,16 +4,15 @@
     name: nginx
     state: present
 
-- name: Disable the default site
-  file:
-    path:  /etc/nginx/sites-enabled/default
+- name: Delete old forwards
+  ansible.builtin.file:
     state: absent
-  notify: Restart nginx
+    path: /etc/nginx/sites-enabled
 
-- name: Create monke.science
-  ansible.builtin.template:
-    dest: /etc/nginx/sites-enabled/monke.science
-    src: monke.science
+- name: Create forwards
+  ansible.builtin.copy:
+    dest: /etc/nginx/
+    src: sites-enabled
     mode: '644'
   notify: Restart nginx
 
@@ -22,4 +21,14 @@
     dest: /etc/nginx/nginx.conf
     src: nginx.conf
     mode: '644'
+  notify: Restart nginx
+
+# certbot revoke --cert-name example.com
+- name: Creates tls certificates
+  loop:
+    - monke.science
+    - grafana.dojo.monke.science
+  ansible.builtin.command: certbot --non-interactive --nginx -d {{ item }}
+  args:
+    creates: /etc/letsencrypt/live/{{ item }}/cert.pem
   notify: Restart nginx

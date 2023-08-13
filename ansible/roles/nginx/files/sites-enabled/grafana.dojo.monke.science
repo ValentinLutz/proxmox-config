@@ -1,0 +1,33 @@
+server {
+    if ($host = grafana.dojo.monke.science) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+
+    server_name grafana.dojo.monke.science;
+
+    location / {
+       proxy_set_header Host 192.168.134.160;
+       proxy_set_header Origin https://192.168.134.160;
+       proxy_pass http://192.168.134.160:3000;
+    }
+}
+
+server {
+    listen 443;
+    listen [::]:433;
+
+    server_name grafana.dojo.monke.science;
+
+    location / {
+       proxy_set_header Host 192.168.134.160;
+       proxy_set_header Origin https://192.168.134.160;
+       proxy_pass http://192.168.134.160:3000;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/grafana.dojo.monke.science/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/grafana.dojo.monke.science/privkey.pem; # managed by Certbot
+}
