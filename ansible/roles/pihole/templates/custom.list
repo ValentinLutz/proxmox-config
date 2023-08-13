@@ -4,4 +4,4 @@
 192.168.134.101 haproxy.box
 192.168.134.102 pihole.box
 
-192.168.134.110 rke2.box
+192.168.134.200 grafana.dojo.box

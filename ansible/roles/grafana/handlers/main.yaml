@@ -1,0 +1,7 @@
+---
+- name: restart docker containers
+  ansible.builtin.shell: | 
+    docker compose down
+    docker compose up -d
+  args:
+    chdir: /etc/deployment

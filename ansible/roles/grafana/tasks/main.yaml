@@ -1,0 +1,21 @@
+---
+- name: copy grafana files
+  ansible.builtin.copy:
+    src: grafana/
+    dest: /etc/deployment/grafana
+    mode: 0644
+  notify: restart docker containers
+
+- name: copy prometheus files
+  ansible.builtin.copy:
+    src: prometheus/
+    dest: /etc/deployment/prometheus
+    mode: 0644
+  notify: restart docker containers
+
+- name: copy docker-compose.yaml
+  ansible.builtin.template:
+    src: docker-compose.yaml
+    dest: /etc/deployment/docker-compose.yaml
+    mode: 0644
+  notify: restart docker containers

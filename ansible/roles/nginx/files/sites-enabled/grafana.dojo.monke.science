@@ -10,9 +10,9 @@ server {
     server_name grafana.dojo.monke.science;
 
     location / {
-       proxy_set_header Host 192.168.134.160;
-       proxy_set_header Origin https://192.168.134.160;
-       proxy_pass http://192.168.134.160:3000;
+       proxy_set_header Host grafana.dojo.box;
+       proxy_set_header Origin https://grafana.dojo.box;
+       proxy_pass http://grafana.dojo.box:3000;
     }
 }
 
@@ -23,9 +23,9 @@ server {
     server_name grafana.dojo.monke.science;
 
     location / {
-       proxy_set_header Host 192.168.134.160;
-       proxy_set_header Origin https://192.168.134.160;
-       proxy_pass http://192.168.134.160:3000;
+       proxy_set_header Host grafana.dojo.box;
+       proxy_set_header Origin https://grafana.dojo.box;
+       proxy_pass http://grafana.dojo.box:3000;
     }
 
     ssl_certificate /etc/letsencrypt/live/grafana.dojo.monke.science/fullchain.pem; # managed by Certbot

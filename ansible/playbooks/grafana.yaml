@@ -1,0 +1,10 @@
+---
+- name: Create coding dojo grafana
+  hosts: coding_dojo_grafana
+  become: true
+  vars_files:
+    - ../vars/grafana.secrets.yaml
+  roles:
+    - ../roles/ubuntu
+    - ../roles/docker
+    - ../roles/grafana

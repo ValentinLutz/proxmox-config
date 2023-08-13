@@ -13,5 +13,5 @@ apply.wireguard:: ## Install and configure wireguard
 apply.pihole:: ## Install and configure pihole
 	ansible-playbook playbooks/pihole.yaml -v
 
-apply.rke2:: ## Install and configure rke2 single node cluster
-	ansible-playbook playbooks/rke2.yaml -v
+apply.grafana:: ## Install and configure grafana
+	ansible-playbook playbooks/grafana.yaml -v
